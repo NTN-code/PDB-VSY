@@ -1,0 +1,25 @@
+PGDATA default
+/var/lib/postgresql/data
+
+$ docker run -d \
+	--name some-postgres \
+	-e POSTGRES_PASSWORD=mysecretpassword \
+	-e PGDATA=/var/lib/postgresql/data/pgdata \
+	-v /custom/mount:/var/lib/postgresql/data \
+	postgres
+
+
+
+# This file is read on server startup and when the server receives a SIGHUP
+# signal.  If you edit the file on a running system, you have to SIGHUP the
+# server for the changes to take effect, run "pg_ctl reload", or execute
+# "SELECT pg_reload_conf()".  Some parameters, which are marked below,
+# require a server shutdown and restart to take effect.
+
+
+Имя компьютера и номер порта для ведущего, имя подключающегося пользователя и пароль указываются в primary_conninfo.
+Пароль также может быть задан в файле ~/.pgpass на резервном сервере (в поле database нужно указать replication).
+Например, если ведущий принимает подключения по IP-адресу 192.168.1.50, через порт 5432, пользователя для репликации foo с паролем foopass,
+администратор может добавить следующую строку в файл postgresql.conf на резервном сервере:
+
+

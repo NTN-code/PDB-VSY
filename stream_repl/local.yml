@@ -1,0 +1,88 @@
+version: "3.8"
+
+services:
+  db-primary:
+    # build:
+    #   context: .
+    #   dockerfile: ./primary/primary.Dockerfile
+    image: postgres:14.5
+    container_name: "db-primary"
+    env_file: "./primary/primary.env"
+    ports:
+      - 15432:5432
+    networks:
+      db-network:
+    networks:
+      db-network:
+        ipv4_address: 172.28.0.2
+    volumes:
+      - ./primary/primary-db-data:/var/lib/postgresql/data
+      - ./primary/primary.pg_hba.conf:/etc/postgresql/pg_hba.conf
+      - ./primary/primary.postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./primary/scripts/init.sh:/docker-entrypoint-initdb.d/init.sh
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf -c hba_file=/etc/postgresql/pg_hba.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: always
+
+  db-standby:
+    build:
+      context: .
+      dockerfile: ./standby/standby.Dockerfile
+    # image: postgres:14.5
+    ports:
+      - 15434:5432
+    container_name: "db-standby"
+    networks:
+      db-network:
+        ipv4_address: 172.28.0.3
+    env_file: "./standby/standby.env"
+    volumes:
+      - ./standby/standby-db-data:/var/lib/postgresql/data
+      - ./standby/standby-db-repl:/var/lib/postgresql/repl
+      - ./standby/standby.pg_hba.conf:/etc/postgresql/pg_hba.conf
+      - ./standby/standby.postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./standby/scripts/init.sh:/docker-entrypoint-initdb.d/init.sh
+      - ./standby/.pgpass:/var/lib/postgresql/.pgpass
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf -c hba_file=/etc/postgresql/pg_hba.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: always
+    depends_on:
+      - db-primary
+
+networks:
+  db-network: 
+    driver: bridge
+    name: db-network
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+          gateway: 172.28.0.1
+
+
+# network:
+#   - backend
+# deploy:
+#   restart_policy:
+#     condition: always
+#     delay: 5s
+#     max_attempts: 3
+
+#   placement:
+#     max_replicas_per_node: 1
+#     constraints:
+#       - "node.role==manager"
+
+
+# volumes:
+#   master-db-data: ./master-db-data
+#     driver: local

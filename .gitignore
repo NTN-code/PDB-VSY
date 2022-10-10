@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+
+PDB-VSY\stream_repl\primary\primary-db-data
+PDB-VSY\stream_repl\standby\standby-db-data
+PDB-VSY\stream_repl\standby\standby-db-repl
