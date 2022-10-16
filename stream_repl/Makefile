@@ -11,14 +11,20 @@ standby_up:
 	echo "Change CIDR in standby.pg_hba.conf!" && \
 	echo "Change .pgpass in standby!" && \
 	docker-compose -f ./local.yml up db-standby -d && \
+	echo "pg_basebackup --host=172.28.0.2 --username=repluser --pgdata=/var/lib/postgresql/repl --wal-method=stream --write-recovery-conf" && \
 	timeout 15
 	- docker exec -it db-standby bash  && \
 	docker stop db-standby  && \
 	timeout 15 && \
 	sudo rm -r ./standby/standby-db-data/* && \
+	timeout 5 
+	sudo move ./standby/standby-db-repl/* ./standby/standby-db-data/ && \
 	timeout 2 && \
-	move ./standby/standby-db-repl/* ./standby/standby-db-data/ && \
 	docker start db-standby
 
 standby_bash:
 	docker exec -it stream_repl_standby-1 bash
+
+start:
+	make primary_up && \
+	make standby_up

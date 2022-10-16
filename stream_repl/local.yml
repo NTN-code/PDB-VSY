@@ -2,14 +2,12 @@ version: "3.8"
 
 services:
   db-primary:
-    # build:
-    #   context: .
-    #   dockerfile: ./primary/primary.Dockerfile
     image: postgres:14.5
     container_name: "db-primary"
     env_file: "./primary/primary.env"
     ports:
-      - 15432:5432
+      - 5432:5432
+      - 192.168.0.14:15432:5432
     networks:
       db-network:
     networks:
@@ -35,7 +33,8 @@ services:
       dockerfile: ./standby/standby.Dockerfile
     # image: postgres:14.5
     ports:
-      - 15434:5432
+      - 15433:5432
+      - 192.168.0.14:15433:5432
     container_name: "db-standby"
     networks:
       db-network:
@@ -67,22 +66,3 @@ networks:
       config:
         - subnet: 172.28.0.0/16
           gateway: 172.28.0.1
-
-
-# network:
-#   - backend
-# deploy:
-#   restart_policy:
-#     condition: always
-#     delay: 5s
-#     max_attempts: 3
-
-#   placement:
-#     max_replicas_per_node: 1
-#     constraints:
-#       - "node.role==manager"
-
-
-# volumes:
-#   master-db-data: ./master-db-data
-#     driver: local
