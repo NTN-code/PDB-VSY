@@ -14,3 +14,6 @@
 `docker restart db-primary-1`
 
 `docker network inspect stream_repl_default`
+
+`pg_dump`
+`pg_basebackup`

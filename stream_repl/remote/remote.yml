@@ -4,7 +4,8 @@ services:
   db-remote:
     image: postgres:14.5
     ports:
-      - 5433:5432
+      - 5432:5432
+      - 192.168.0.14:15432:5432
     container_name: "db-remote"
     networks:
       db-network:
