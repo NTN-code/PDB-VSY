@@ -16,4 +16,5 @@
 `docker network inspect stream_repl_default`
 
 `pg_dump`
+`pg_dumpall`
 `pg_basebackup`
