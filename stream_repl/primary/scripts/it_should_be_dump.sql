@@ -1,4 +1,0 @@
-SELECT pg_reload_conf();
-
--- CREATE USER repluser WITH REPLICATION LOGIN;
--- ALTER USER repluser WITH PASSWORD '12345678';

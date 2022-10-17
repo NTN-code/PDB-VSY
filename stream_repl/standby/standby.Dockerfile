@@ -4,5 +4,4 @@ RUN apt-get update && \
     apt-get install -y nano
 
 
-COPY ./standby/scripts/cli_init.sh ./etc/postgresql/cli_init.sh
-
+COPY ./pgpass ~/.pgpass

@@ -11,7 +11,7 @@ standby_up:
 	echo "Change CIDR in standby.pg_hba.conf!" && \
 	echo "Change .pgpass in standby!" && \
 	docker-compose -f ./local.yml up db-standby -d && \
-	echo "pg_basebackup --host=172.28.0.2 --username=repluser --pgdata=/var/lib/postgresql/repl --wal-method=stream --write-recovery-conf" && \
+	echo "pg_basebackup --host=172.28.0.2 --username=repluser --pgdata=/var/lib/postgresql/repl --wal-method=stream --write-recovery-conf \n chown postgres:postgres /var/lib/postgresql/.pgpass \n chmod 0600 /var/lib/postgresql/.pgpass" && \
 	timeout 15
 	- docker exec -it db-standby bash  && \
 	docker stop db-standby  && \

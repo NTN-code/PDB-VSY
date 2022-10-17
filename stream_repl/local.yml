@@ -52,7 +52,6 @@ services:
       - ./standby/scripts/init.sh:/docker-entrypoint-initdb.d/init.sh
       - ./standby/scripts/:/etc/postgresql/scripts/
       
-      - ./standby/.pgpass:/var/lib/postgresql/.pgpass
     command: postgres -c config_file=/etc/postgresql/postgresql.conf -c hba_file=/etc/postgresql/pg_hba.conf
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
