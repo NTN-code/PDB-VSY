@@ -12,8 +12,6 @@ services:
       # - 192.168.0.12:15432:5432
     networks:
       db-network:
-    networks:
-      db-network:
         ipv4_address: 172.28.0.2
     volumes:
       - ./primary/primary-db-data:/var/lib/postgresql/data
@@ -49,6 +47,7 @@ services:
     volumes:
       - ./standby/standby-db-data:/var/lib/postgresql/data
       - ./standby/standby-db-repl:/var/lib/postgresql/repl
+      - ./standby/.pgpass:/var/lib/postgresql/.pgpass
 
       - ./standby/standby.pg_hba.conf:/etc/postgresql/pg_hba.conf
       - ./standby/standby.postgresql.conf:/etc/postgresql/postgresql.conf
