@@ -1,7 +1,7 @@
 # TODO
 - [x] Set good behavior volume
-- [] make pg_hba.conf file for replication
-- [] test replication 
+- [x] make pg_hba.conf file for replication
+- [x] test replication 
 
 # Primary
 

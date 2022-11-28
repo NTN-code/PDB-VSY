@@ -2,12 +2,14 @@ version: "3.8"
 
 services:
   db-primary:
-    image: postgres:14.5
+    build:
+      context: .
+      dockerfile: ./primary/primary.Dockerfile
     container_name: "db-primary"
     env_file: "./primary/primary.env"
     ports:
       - 5432:5432
-      - 192.168.0.14:15432:5432
+      # - 192.168.0.12:15432:5432
     networks:
       db-network:
     networks:
@@ -20,6 +22,8 @@ services:
       - ./primary/primary.postgresql.conf:/etc/postgresql/postgresql.conf
       
       - ./primary/scripts/init.sh:/docker-entrypoint-initdb.d/init.sh
+      - ./primary/scripts/:/etc/postgresql/scripts/
+
     command: postgres -c config_file=/etc/postgresql/postgresql.conf -c hba_file=/etc/postgresql/pg_hba.conf
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
@@ -34,10 +38,10 @@ services:
       context: .
       dockerfile: ./standby/standby.Dockerfile
     # image: postgres:14.5
+    container_name: "db-standby"
     ports:
       - 15433:5432
-      - 192.168.0.14:15433:5432
-    container_name: "db-standby"
+      # - 192.168.0.12:15433:5432
     networks:
       db-network:
         ipv4_address: 172.28.0.3
