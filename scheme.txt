@@ -1,0 +1,99 @@
+CREATE TABLE categories (
+        id SERIAL NOT NULL,
+        name VARCHAR(50),
+        image BYTEA,
+        PRIMARY KEY (id)
+)
+
+
+2022-10-16 20:21:10,244 INFO sqlalchemy.engine.Engine [no key 0.00025s] {}
+2022-10-16 20:21:10,278 INFO sqlalchemy.engine.Engine
+CREATE TABLE users (
+        id SERIAL NOT NULL,
+        email VARCHAR(50),
+        password VARCHAR,
+        name VARCHAR(30),
+        surname VARCHAR(30),
+        country VARCHAR(50),
+        city VARCHAR(50),
+        address VARCHAR(50),
+        phone VARCHAR(14),
+        role INTEGER,
+        created_at TIMESTAMP WITHOUT TIME ZONE,
+        updated_at TIMESTAMP WITHOUT TIME ZONE,
+        deleted_at TIMESTAMP WITHOUT TIME ZONE,
+        PRIMARY KEY (id),
+        UNIQUE (phone)
+)
+
+
+2022-10-16 20:21:10,278 INFO sqlalchemy.engine.Engine [no key 0.00032s] {}
+2022-10-16 20:21:10,307 INFO sqlalchemy.engine.Engine
+CREATE TABLE subcategories (
+        id SERIAL NOT NULL,
+        name VARCHAR(50),
+        category_id INTEGER,
+        PRIMARY KEY (id),
+        FOREIGN KEY(category_id) REFERENCES categories (id)
+)
+
+
+2022-10-16 20:21:10,307 INFO sqlalchemy.engine.Engine [no key 0.00026s] {}
+2022-10-16 20:21:10,334 INFO sqlalchemy.engine.Engine
+CREATE TABLE orders (
+        id SERIAL NOT NULL,
+        status VARCHAR,
+        amount INTEGER,
+        created_at TIMESTAMP WITHOUT TIME ZONE,
+        user_id INTEGER,
+        PRIMARY KEY (id),
+        FOREIGN KEY(user_id) REFERENCES users (id)
+)
+
+
+2022-10-16 20:21:10,334 INFO sqlalchemy.engine.Engine [no key 0.00038s] {}
+2022-10-16 20:21:10,356 INFO sqlalchemy.engine.Engine
+CREATE TABLE products (
+        id SERIAL NOT NULL,
+        name VARCHAR(50),
+        weight FLOAT,
+        description TEXT,
+        thumb BYTEA,
+        image BYTEA,
+        stock INTEGER,
+        price FLOAT,
+        category_id INTEGER,
+        subcategory_id INTEGER,
+        PRIMARY KEY (id),
+        FOREIGN KEY(category_id) REFERENCES categories (id),
+        FOREIGN KEY(subcategory_id) REFERENCES subcategories (id)
+)
+
+
+2022-10-16 20:21:10,356 INFO sqlalchemy.engine.Engine [no key 0.00031s] {}
+2022-10-16 20:21:10,381 INFO sqlalchemy.engine.Engine
+CREATE TABLE comments (
+        id SERIAL NOT NULL,
+        text TEXT,
+        user_id INTEGER,
+        product_id INTEGER,
+        PRIMARY KEY (id),
+        FOREIGN KEY(user_id) REFERENCES users (id),
+        FOREIGN KEY(product_id) REFERENCES products (id)
+)
+
+
+2022-10-16 20:21:10,381 INFO sqlalchemy.engine.Engine [no key 0.00035s] {}
+2022-10-16 20:21:10,407 INFO sqlalchemy.engine.Engine
+CREATE TABLE orderdetails (
+        id SERIAL NOT NULL,
+        order_id INTEGER,
+        product_id INTEGER,
+        PRIMARY KEY (id),
+        FOREIGN KEY(order_id) REFERENCES orders (id),
+        FOREIGN KEY(product_id) REFERENCES products (id)
+)
+
+
+2022-10-16 20:21:10,407 INFO sqlalchemy.engine.Engine [no key 0.00028s] {}
+2022-10-16 20:21:10,422 INFO sqlalchemy.engine.Engine COMMIT

@@ -1,0 +1,25 @@
+2022-12-09 09:06:18.052 GMT [57]  :/LOG:  starting PostgreSQL 14.5 (Debian 14.5-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
+2022-12-09 09:06:18.054 GMT [57]  :/LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-12-09 09:06:18.084 GMT [59]  :/LOG:  database system was shut down at 2022-12-09 09:06:15 GMT
+2022-12-09 09:06:18.127 GMT [57]  :/LOG:  database system is ready to accept connections
+2022-12-09 09:06:18.248 GMT [68] [local] [unknown]:[unknown]/[unknown]LOG:  connection received: host=[local]
+2022-12-09 09:06:18.252 GMT [68] [local] postgres:postgres/[unknown]LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2022-12-09 09:06:18.310 GMT [68] [local] postgres:postgres/psqlLOG:  statement: SELECT 1 FROM pg_database WHERE datname = 'postgres' ;
+2022-12-09 09:06:18.336 GMT [68] [local] postgres:postgres/psqlLOG:  disconnection: session time: 0:00:00.087 user=postgres database=postgres host=[local]
+2022-12-09 09:06:18.370 GMT [72] [local] [unknown]:[unknown]/[unknown]LOG:  connection received: host=[local]
+2022-12-09 09:06:18.376 GMT [72] [local] postgres:postgres/[unknown]LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2022-12-09 09:06:18.396 GMT [72] [local] postgres:postgres/psqlLOG:  statement: CREATE DATABASE vsy;
+2022-12-09 09:06:20.579 GMT [72] [local] postgres:postgres/psqlLOG:  statement: CREATE USER repluser WITH REPLICATION ENCRYPTED PASSWORD '12345678' LOGIN;
+2022-12-09 09:06:20.585 GMT [72] [local] postgres:postgres/psqlLOG:  statement: CREATE USER staff WITH NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT LOGIN REPLICATION ENCRYPTED PASSWORD 'staff';
+2022-12-09 09:06:20.589 GMT [72] [local] postgres:postgres/psqlLOG:  statement: GRANT CONNECT, TEMPORARY ON DATABASE vsy TO staff;
+2022-12-09 09:06:20.592 GMT [72] [local] postgres:postgres/psqlLOG:  statement: GRANT pg_read_all_data TO staff;
+2022-12-09 09:06:20.598 GMT [72] [local] postgres:postgres/psqlLOG:  statement: SELECT pg_reload_conf();
+2022-12-09 09:06:20.601 GMT [57]  :/LOG:  received SIGHUP, reloading configuration files
+2022-12-09 09:06:20.601 GMT [72] [local] postgres:postgres/psqlLOG:  disconnection: session time: 0:00:02.231 user=postgres database=postgres host=[local]
+2022-12-09 09:06:20.605 GMT [57]  :/LOG:  parameter "listen_addresses" cannot be changed without restarting the server
+2022-12-09 09:06:20.606 GMT [57]  :/LOG:  configuration file "/etc/postgresql/postgresql.conf" contains errors; unaffected changes were applied
+2022-12-09 09:06:20.614 GMT [57]  :/LOG:  received fast shutdown request
+2022-12-09 09:06:20.617 GMT [57]  :/LOG:  aborting any active transactions
+2022-12-09 09:06:20.619 GMT [57]  :/LOG:  background worker "logical replication launcher" (PID 65) exited with exit code 1
+2022-12-09 09:06:20.633 GMT [60]  :/LOG:  shutting down
+2022-12-09 09:06:20.718 GMT [57]  :/LOG:  database system is shut down

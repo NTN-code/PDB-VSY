@@ -1,0 +1,11 @@
+2022-12-09 09:06:20.754 GMT [1]  :/LOG:  starting PostgreSQL 14.5 (Debian 14.5-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
+2022-12-09 09:06:20.754 GMT [1]  :/LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-12-09 09:06:20.754 GMT [1]  :/LOG:  listening on IPv6 address "::", port 5432
+2022-12-09 09:06:20.759 GMT [1]  :/LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-12-09 09:06:20.783 GMT [75]  :/LOG:  database system was shut down at 2022-12-09 09:06:20 GMT
+2022-12-09 09:06:20.811 GMT [1]  :/LOG:  database system is ready to accept connections
+2022-12-09 09:06:23.339 GMT [1]  :/LOG:  received fast shutdown request
+2022-12-09 09:06:23.343 GMT [1]  :/LOG:  aborting any active transactions
+2022-12-09 09:06:23.345 GMT [1]  :/LOG:  background worker "logical replication launcher" (PID 81) exited with exit code 1
+2022-12-09 09:06:23.346 GMT [76]  :/LOG:  shutting down
+2022-12-09 09:06:23.416 GMT [1]  :/LOG:  database system is shut down

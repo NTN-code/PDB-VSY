@@ -1,0 +1,2 @@
+13 * * * * /etc/postgresql/scripts/dump_sql.sh
+12 * * * * root /etc/postgresql/scripts/dump_json_db.sh

@@ -22,6 +22,9 @@ services:
       - ./primary/scripts/init.sh:/docker-entrypoint-initdb.d/init.sh
       - ./primary/scripts/:/etc/postgresql/scripts/
 
+      - ./primary/.pgpass:/var/lib/postgresql/.pgpass
+      - ./primary/logs/:/var/log/postgresql/
+
     command: postgres -c config_file=/etc/postgresql/postgresql.conf -c hba_file=/etc/postgresql/pg_hba.conf
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
@@ -35,7 +38,6 @@ services:
     build:
       context: .
       dockerfile: ./standby/standby.Dockerfile
-    # image: postgres:14.5
     container_name: "db-standby"
     ports:
       - 15433:5432

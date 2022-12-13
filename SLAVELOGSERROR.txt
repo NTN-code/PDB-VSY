@@ -1,0 +1,195 @@
+
+PostgreSQL Database directory appears to contain a database; Skipping initialization
+
+2022-10-09 20:24:09.425 GMT [1] LOG:  starting PostgreSQL 14.5 (Debian 14.5-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
+2022-10-09 20:24:09.425 GMT [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-10-09 20:24:09.425 GMT [1] LOG:  listening on IPv6 address "::", port 5432
+2022-10-09 20:24:09.434 GMT [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-10-09 20:24:09.484 GMT [26] LOG:  database system was interrupted; last known up at 2022-10-09 20:23:06 GMT
+2022-10-09 20:24:14.590 GMT [26] LOG:  database system was not properly shut down; automatic recovery in progress
+2022-10-09 20:24:14.622 GMT [26] LOG:  redo starts at 0/16FAF40
+2022-10-09 20:24:14.623 GMT [26] LOG:  invalid record length at 0/16FAF78: wanted 24, got 0
+2022-10-09 20:24:14.623 GMT [26] LOG:  redo done at 0/16FAF40 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2022-10-09 20:24:14.723 GMT [1] LOG:  database system is ready to accept connections
+2022-10-09 20:32:45.322 GMT [1] LOG:  server process (PID 414) exited with exit code 11
+2022-10-09 20:32:45.322 GMT [1] LOG:  terminating any other active server processes
+2022-10-09 20:32:45.381 GMT [1] LOG:  all server processes terminated; reinitializing
+2022-10-09 20:32:45.439 GMT [485] LOG:  database system was interrupted; last known up at 2022-10-09 20:24:14 GMT
+2022-10-09 20:32:49.784 GMT [485] LOG:  database system was not properly shut down; automatic recovery in progress
+2022-10-09 20:32:49.822 GMT [485] LOG:  redo starts at 0/16FAFF0
+2022-10-09 20:32:49.823 GMT [485] LOG:  invalid record length at 0/16FB028: wanted 24, got 0
+2022-10-09 20:32:49.824 GMT [485] LOG:  redo done at 0/16FAFF0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s
+2022-10-09 20:32:49.942 GMT [1] LOG:  database system is ready to accept connections
+2022-10-09 20:33:50.039 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:50.757 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:50.758 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:51.477 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:51.478 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:52.191 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:52.192 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:52.909 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:52.910 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:53.619 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:53.620 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:54.316 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:54.317 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:54.690 GMT [556] FATAL:  could not open file "global/pg_filenode.map": No such file or directory
+2022-10-09 20:33:55.017 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:55.018 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:55.745 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:55.746 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:56.469 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:56.470 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:57.172 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:57.172 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:57.886 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:57.887 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:58.594 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:58.595 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:59.304 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:33:59.304 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:34:00.007 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:34:00.008 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:34:00.733 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:34:00.734 GMT [490] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
+2022-10-09 20:34:01.186 GMT [489] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2022-10-09 20:34:04.967 GMT [564] FATAL:  could not open file "global/pg_filenode.map": No such file or directory
+2022-10-09 20:34:15.248 GMT [572] FATAL:  could not open file "global/pg_filenode.map": No such file or directory
+2022-10-09 20:34:25.454 GMT [1] LOG:  could not open file "postmaster.pid": No such file or directory
+2022-10-09 20:34:25.454 GMT [1] LOG:  performing immediate shutdown because data directory lock file is invalid
+2022-10-09 20:34:25.454 GMT [1] LOG:  received immediate shutdown request
+2022-10-09 20:34:25.455 GMT [1] LOG:  could not open file "postmaster.pid": No such file or directory
+2022-10-09 20:34:25.456 GMT [490] LOG:  could not open temporary statistics file "pg_stat/global.tmp": No such file or directory
+2022-10-09 20:34:25.464 GMT [1] WARNING:  online backup mode was not canceled
+2022-10-09 20:34:25.464 GMT [1] DETAIL:  File "backup_label" could not be renamed to "backup_label.old": Permission denied.
+2022-10-09 20:34:25.467 GMT [1] LOG:  database system is shut down
+initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
+If you want to create a new database system, either remove or empty
+the directory "/var/lib/postgresql/data" or run initdb
+with an argument other than "/var/lib/postgresql/data".
+initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
+If you want to create a new database system, either remove or empty
+the directory "/var/lib/postgresql/data" or run initdb
+with an argument other than "/var/lib/postgresql/data".
+initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
+If you want to create a new database system, either remove or empty
+the directory "/var/lib/postgresql/data" or run initdb
+with an argument other than "/var/lib/postgresql/data".
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
+If you want to create a new database system, either remove or empty
+the directory "/var/lib/postgresql/data" or run initdb
+with an argument other than "/var/lib/postgresql/data".
+initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
+If you want to create a new database system, either remove or empty
+the directory "/var/lib/postgresql/data" or run initdb
+with an argument other than "/var/lib/postgresql/data".
+initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
+If you want to create a new database system, either remove or empty
+the directory "/var/lib/postgresql/data" or run initdb
+with an argument other than "/var/lib/postgresql/data".
+initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
+If you want to create a new database system, either remove or empty
+the directory "/var/lib/postgresql/data" or run initdb
+with an argument other than "/var/lib/postgresql/data".
+initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
+If you want to create a new database system, either remove or empty
+the directory "/var/lib/postgresql/data" or run initdb
+with an argument other than "/var/lib/postgresql/data".
+initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
+If you want to create a new database system, either remove or empty
+the directory "/var/lib/postgresql/data" or run initdb
+with an argument other than "/var/lib/postgresql/data".
+initdb: error: directory "/var/lib/postgresql/data" exists but is not empty
+If you want to create a new database system, either remove or empty
+the directory "/var/lib/postgresql/data" or run initdb
+with an argument other than "/var/lib/postgresql/data".

@@ -1,0 +1,269 @@
+create or replace procedure add_person(
+   email varchar,
+   password varchar, 
+   name varchar,
+   surname varchar,
+   country varchar,
+   city varchar,
+	address varchar,
+	phone varchar
+)
+language plpgsql    
+as $$
+begin
+	insert into users (email, password, name, surname, country, city, address, phone, role, created_at)
+	values (email, password, name, surname,  country,  city, address, phone, 0, current_timestamp);
+    commit;
+end;$$
+
+
+
+create or replace procedure make_order(
+	amount int,
+	user_id int,
+	product_id int
+)
+language plpgsql    
+as $$
+DECLARE
+    o_id int;
+	amount_product int;
+begin
+	select stock into amount_product from products;
+	
+	if amount_product < amount then 
+		RAISE EXCEPTION 'Not such amount in stock';
+	end if;
+	
+	insert into orders (status, amount,  user_id, created_at)
+	values ('OPENED', amount, user_id, CURRENT_TIMESTAMP) RETURNING id into o_id;
+	
+	insert into orderdetails (order_id, product_id)
+	values (o_id, product_id);
+    commit;
+end;$$
+
+
+create or replace procedure add_category(
+   name varchar,
+   image bytea 
+)
+language plpgsql    
+as $$
+begin
+	insert into categories (name, image)
+	values (name, image);
+    commit;
+end;$$
+
+
+create or replace procedure add_comment(
+   comment_text text,
+   user_id int, 
+   product_id int
+)
+language plpgsql    
+as $$
+begin
+	insert into comments (text, user_id, product_id)
+	values (comment_text, user_id, product_id);
+    commit;
+end;$$
+
+
+create or replace procedure add_product(
+   name varchar,
+   weight double PRECISION, 
+   description text, 
+	image bytea,
+	stock int, 
+	price double precision,
+	category_id int
+)
+language plpgsql    
+as $$
+begin
+	insert into products (
+		name, weight, description, image, stock,
+		price, category_id
+	)
+	values (name, weight, description, image, stock, price, category_id);
+    commit;
+end;$$
+
+
+
+
+create or replace procedure denied_order(
+	order_id int
+)
+language plpgsql    
+as $$
+DECLARE
+    p_id int;
+	amount_order int;
+	amount_product int;
+
+begin
+	select amount into amount_order from orders;
+	select product_id into p_id from orders;
+	select stock into amount_product from products where id = p_id;
+
+	update products set stock = (amount_product + amount_order) where id = p_id;
+	
+	update orders set status = 'CLOSED' where id = order_id;
+	
+	commit;
+end;$$
+
+
+
+create or replace procedure change_status_order(
+	order_id int,
+	status varchar
+)
+language plpgsql    
+as $$
+begin
+	update orders set status = status where id = order_id;
+	commit;
+end;$$
+
+
+create or replace procedure change_user_role(
+	user_id int,
+	role_int int
+)
+language plpgsql    
+as $$
+begin
+	update users set role = role_int where id = user_id;
+	commit;
+end;$$
+
+create or replace procedure delete_comment(
+	comment_id int
+)
+language plpgsql    
+as $$
+begin
+	delete from comments where id = comment_id;
+	commit;
+end;$$
+
+
+-- 1
+create or replace procedure add_stock_product(
+	product_id int,
+	added_stock int
+)
+language plpgsql    
+as $$
+DECLARE
+	amount_product int;
+begin
+	select stock into amount_product from products where id = product_id;
+	update products set stock = (amount_product + added_stock) where id = product_id;
+	commit;
+end;$$
+
+-- 2
+CREATE OR REPLACE FUNCTION get_all_comments() RETURNS SETOF comments AS $$
+SELECT * FROM comments;
+$$ LANGUAGE sql;
+
+--3
+CREATE OR REPLACE FUNCTION get_one_comment(id int) RETURNS SETOF comments AS $$
+SELECT * FROM comments where comments.id = id;
+$$ LANGUAGE sql;
+
+--4 
+CREATE OR REPLACE FUNCTION get_all_products() RETURNS SETOF products AS $$
+SELECT * FROM products;
+$$ LANGUAGE sql;
+
+--5
+CREATE OR REPLACE FUNCTION get_one_product(name varchar) RETURNS SETOF products AS $$
+SELECT * FROM comments where products.name = name;
+$$ LANGUAGE sql;
+
+--6 
+CREATE OR REPLACE FUNCTION get_all_category() RETURNS SETOF categories AS $$
+SELECT * FROM categories;
+$$ LANGUAGE sql;
+
+--7
+CREATE OR REPLACE FUNCTION get_one_category(name varchar) RETURNS SETOF categories AS $$
+SELECT * FROM categories where categories.name = name;
+$$ LANGUAGE sql;
+
+--8
+CREATE OR REPLACE FUNCTION get_all_orders() RETURNS SETOF orders AS $$
+SELECT * FROM orders;
+$$ LANGUAGE sql;
+
+--9
+CREATE OR REPLACE FUNCTION get_one_order(id int) RETURNS SETOF orders AS $$
+SELECT * FROM orders where orders.id = id;
+$$ LANGUAGE sql;
+
+
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS order_and_user AS
+	SELECT orders.id as order_id, orders.status, orders.amount, products.id as product_id, products.price FROM orderdetails
+	INNER JOIN orders ON orders.id = orderdetails.order_id 
+	INNER JOIN products ON products.id = orderdetails.product_id 
+WITH DATA 
+
+
+
+
+
+
+Внешний ключ должен ссылаться на столбцы, образующие первичный ключ или ограничение уникальности. Таким образом, для связанных столбцов всегда будет существовать индекс (определённый соответствующим первичным ключом или ограничением), а значит проверки соответствия связанной строки будут выполняться эффективно. 
+
+
+
+
+
+create or replace procedure add_category_id_to_product(
+	product_id int,
+	category_id_input int
+)
+language plpgsql    
+as $$
+begin
+	update products set category_id = category_id_input where id = product_id;
+	commit;
+end;$$
+
+create or replace procedure change_stock_in_product(
+	product_id int,
+	new_stock int
+)
+language plpgsql    
+as $$
+begin
+	update products set stock = v where id = product_id;
+	commit;
+end;$$
+
+create or replace procedure chage_user_email(
+	new_email varchar,
+	old_email varchar
+)
+language plpgsql    
+as $$
+begin
+	update users set email = new_email where email = old_email;
+	commit;
+end;$$
+
+
+
+
+
+
+
+
+

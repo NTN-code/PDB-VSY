@@ -2,13 +2,16 @@
 
 set -e 
 
-mkdir /etc/postgresql/scripts/sql_data/
-touch /etc/postgresql/scripts/sql_data/data.sql
+dump_name=$(date +%Y_%m_%d_%H_%M)
 
-chown postgres:postgres /etc/postgresql/scripts/sql_data/
-chmod 0777 /etc/postgresql/scripts/sql_data/
+mkdir -p /etc/postgresql/scripts/dumps/
+touch /etc/postgresql/scripts/dumps/$dump_name.sql
+chown postgres:postgres /etc/postgresql/scripts/dumps/$dump_name.sql
 
-pg_dump --host=172.28.0.3 --username=postgres --dbname=$EXAMPLE_DB --file=/etc/postgresql/scripts/sql_data/data.sql --format=p --if-exists --create --clean --verbose --column-inserts
+chown postgres:postgres /etc/postgresql/scripts/dumps/
+chmod 0777 /etc/postgresql/scripts/dumps/
+
+su -c "pg_dump --host=172.28.0.2 --username=postgres --dbname=$EXAMPLE_DB -w --file=/etc/postgresql/scripts/dumps/$dump_name.sql --format=p --if-exists --create --clean --verbose --column-inserts" postgres
 
 
 # pg_dump — это программа для создания резервных копий базы данных PostgreSQL. Она создаёт целостные копии, даже если база параллельно используется. Программа pg_dump не препятствует доступу других пользователей к базе данных (ни для чтения, ни для записи).

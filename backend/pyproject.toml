@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = "Simple project to illustrate connection to standby database"
+authors = ["NTN-code <tk2007m@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = {extras = ["all"], version = "^0.88.0"}
+sqlmodel = "^0.0.8"
+psycopg2 = "^2.9.4"
+sqladmin = "^0.8.0"
+jinja2-base64-filters = "^0.1.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
